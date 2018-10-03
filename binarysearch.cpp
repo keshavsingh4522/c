@@ -36,7 +36,7 @@ clrscr();
 	      m=(s+e)/2;
 	   }
 	 if(p[m]==n1)
-	   printf("ur element at location: %u,%u",m+1,p+m);
+	   printf("ur element at location: %u,%u",m+1,&p+m);
 	 else
 	   printf("element not found");
 getch();
