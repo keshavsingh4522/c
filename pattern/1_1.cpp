@@ -12,3 +12,13 @@ for(i=0;i<n;i++)
  }
 return 0;
 }
+/*
+output:
+enter a number: 6
+* 
+* * 
+* * * 
+* * * * 
+* * * * * 
+* * * * * *
+*/
