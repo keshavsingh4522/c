@@ -1,3 +1,10 @@
+/*
+%*c would exclude one character. Remember, ‘/n’ and ‘/t’ are single characters.
+%*d would exclude one integer.
+%*f would exclude one float.
+%*s would exclude one word.
+*/
+
 #include<stdio.h>
 int main()
 {
