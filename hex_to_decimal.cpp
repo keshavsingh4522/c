@@ -30,3 +30,18 @@ for(i=0;i<k;i++)
 cout<<"\nsum: "<<sum;
 return 0;
 }
+/*
+
+enter a hex number:23
+2
+23
+23
+sum: 35
+
+enter a hex number:23AF
+4
+23AF
+231015
+sum: 9135
+
+*/
