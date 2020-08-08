@@ -7,6 +7,7 @@
 - Addition.
 - Subtraction.
 - Comparison.
+
 **Invalid Operations**
 - Multiply
 - Divide
