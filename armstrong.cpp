@@ -1,29 +1,21 @@
-#include<conio.h>
-#include"iostream.h"
-#include"math.h"
-void main()
+#include<iostream>
+int main()
 {
-clrscr();
-	int  r,n,n1,c=0,sum=0;
-	cout<<"enter a number : ";
-	cin>>n;
+	int  result ,n,n1,c=0,sum=0; 
+	std::cout<<"enter a number : ";
+	std::cin>>n;
 	n1=n;
-	while(n>0)
+	while(n1!=0)
 	  {
-	  r=n%10;
-	  n=n/10;
-	  c++;
-	  }
-	  n=n1;
-	while(n>0)
-	{
-	   r=n%10;
-	   sum=sum+pow(r,c);
-	  n=n/10;
-	}
-       if(sum==n1)
-	cout<<"num is armstrong";
+	      // remainder will accquire the last digit
+    	  c = n1%10;
+    	  sum += c*c*c; 
+    	  //removing last digit from n1
+    	  n1 /= 10;
+     }
+	   if(sum == n)
+	    std::cout<< n <<" is armstrong number.";
        else
-	 cout<<"enterd num is no armstrong";
-getch();
+	    std::cout<< n <<" is not an armstrong number.";
+return 0;
 }
