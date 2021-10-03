@@ -37,7 +37,7 @@ int main()
     double time=((double)t)/CLOCKS_PER_SEC;
     printf("insertion sort took %f seconds to execute \n",time);
 
-    printf("array after sorting:\n");
+    printf("show array after sorting:\n");
 
     for(int i=0;i<n;i++)
     printf("%d\t",nums[i]);
