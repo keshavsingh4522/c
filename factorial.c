@@ -20,3 +20,6 @@ int main()
 
     return 0;
 }
+
+//Enter a positive integer: 3
+//6
