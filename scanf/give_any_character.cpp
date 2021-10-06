@@ -6,12 +6,13 @@
 */
 
 #include<stdio.h>
-int main()
+void main()
 {
  int d,m,y;
   printf("enter date month year ");
   scanf("%d%*c%d%*c%d",&d,&m,&y);
   printf("date: %d\nmonth: %d\nyear: %d",d,m,y);
+ getch();
 return 0;
 }
 /*
