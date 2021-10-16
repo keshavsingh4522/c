@@ -13,10 +13,8 @@ getch();
 }
 int fabnic(int p)
 {
-  if(p==0)
-   return 0;
-  if(p==1)
-   return 1;
- if(p!=0&&p!=1)
-  return(fabnic(p-1)+fabnic(p-2));
+  if(p<=1)
+      return p;
+  else
+    return(fabnic(p-1)+fabnic(p-2));
 }
