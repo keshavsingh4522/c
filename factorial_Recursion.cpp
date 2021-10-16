@@ -9,16 +9,20 @@ int main(void) {
   cout<<"\nEnter the number: ";
 	cin>>num;
 
-  fact = factorial(num);    //calling factorial function
-
-  cout<<"\nThe factorial of "<< num <<" is "<< fact <<" \n";
+  if(num>=0)
+  {
+	  fact = factorial(num);    //calling factorial function
+	  cout<<"\nThe factorial of "<< num <<" is "<< fact <<" \n";
+  }
+  else
+	  cout<<"Not possible"<<endl;
 	return 0;
 }
 
 //function using recursion concept
 long factorial(int n)
 {
-	if(n==1)                    //base case
+	if(n<=1)                    //base case
 		return 1;
 	return n*factorial(n-1);    //recursive call
 }
