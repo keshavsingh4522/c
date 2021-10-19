@@ -6,20 +6,20 @@
 #include<stdio.h>
 int main()
 {
-	int num,rem,rev=0,copy;
+	int num,r1,r2=0,cp;
  
 	printf("\nEnter a number: ");
 	scanf("%d",&num);	//say 234
-	copy=num;
+	cp=num;
  
 	while(copy>0)		//234 
 	{
-	rem=copy%10;		//4 3 2 
-	copy/=10; 	//43 4 0
-	rev=rev*10+rem; 	// 0*10+4 4*10+3 43*10+2 
+	r1=cp%10;		//4 3 2 
+	cp/=10; 	//43 4 0
+	r2=r2*10+r1; 	// 0*10+4 4*10+3 43*10+2 
 	}
  
-	if (rev == num)	printf("\nEntered number is a pallindrome\n");
+	if (r2 == num)	printf("\nEntered number is a pallindrome\n");
 	else printf("\nEntered number is NOT pallindrome\n");
 	
 	return 0;
