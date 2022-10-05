@@ -1,22 +1,25 @@
-#include"conio.h"
-#include"stdio.h"
-int fabnic(int);
-void main()
-{
-clrscr();
-    int n,i;
-    printf("enter how many elements  are to be generated: ");
-    scanf("%d",&n);
-    for(i=0;i<n;i++)
-    printf("%d ",fabnic(i));
-getch();
-}
-int fabnic(int p)
-{
-  if(p==0)
-   return 0;
-  if(p==1)
-   return 1;
- if(p!=0&&p!=1)
-  return(fabnic(p-1)+fabnic(p-2));
-}
+class Solution {
+public:
+    int dp[100000];
+    int fb(int n)
+    {
+        if(n==0)
+            return dp[0]=0;
+        else if(n==1)
+            return dp[1]=1;
+        else
+        {
+            if(dp[n]!=-1)
+                return dp[n];
+            else
+                return dp[n]=fb(n-1)+fb(n-2);
+            
+        }
+
+    }
+    int fib(int n) {
+        memset(dp,-1,sizeof(dp));
+        return fb(n);
+        
+    }
+};
