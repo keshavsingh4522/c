@@ -1,25 +1,39 @@
-#include<stdio.h> 
-#include<conio.h>  
-  
-int maxSubArraySum(int a[], int size) 
-{ 
-    int max_so_far = INT_MIN, max_ending_here = 0; 
-    for (int i = 0; i < size; i++) 
-    { 
-        max_ending_here = max_ending_here + a[i]; 
-        if (max_so_far < max_ending_here) 
-            max_so_far = max_ending_here; 
-  
-        if (max_ending_here < 0) 
-            max_ending_here = 0; 
-    } 
-    return max_so_far; 
-} 
-int main() 
-{ 
-    int a[] = {-2, -3, 4, -1, -2, 1, 5, -3}; 
-    int n = sizeof(a)/sizeof(a[0]); 
-    int max_sum = maxSubArraySum(a, n); 
-    printf("Maximum contiguous sum is %d", max_sum);
-    return 0; 
-} 
+class Solution {
+public:
+    int msd(vector<int> &v,int left,int right )
+    {
+        int mid=(left+right)/2;
+        
+        if(left==right)
+            return v[left];
+        int leftans=msd(v,left,mid);
+        int rightans=msd(v,mid+1,right);
+        int temp=0;
+        int leftmax=v[mid];
+        int rightmax=v[mid+1];
+        for(int i=mid;i>=left;i--)
+        {
+            temp+=v[i];
+            if(temp>leftmax)
+                leftmax=temp;
+            
+        }
+        temp=0;
+     for(int i=mid+1;i<=right;i++)
+        {
+            temp+=v[i];
+            if(temp>rightmax)
+                rightmax=temp;
+            
+        }
+       return max((leftans,rightans),leftmax+rightmax);
+        
+        
+        
+    }
+    int maxSubArray(vector<int>& nums) {
+        return msd(nums,0,nums.size()-1);
+        
+        
+    }
+};
