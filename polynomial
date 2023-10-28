@@ -1,0 +1,92 @@
+#code for polynomial
+
+
+#include <stdio.h>
+
+int main()
+{
+    struct item
+    {
+        int coef;
+        int expo;
+    }p[10],q[10],r[10];
+    void display(struct item a[],int t)
+    {
+        printf("\n");
+        for(int d=0;d<t-1;d++)
+        {
+            printf("%dx^%d+",a[d].coef,a[d].expo);
+        }
+        printf("%dx^%d",a[t-1].coef,a[t-1].expo);
+    }
+    int i=0,j=0,k=0,n,t,m;
+    printf("enter the size of the p: ");
+    scanf("%d",&n);
+    printf("enter the coefficient of p : ");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&p[i].coef);
+    }
+    printf("enter the exponent of p : ");
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&p[i].expo);
+        
+    }
+    printf("enter the size of q : ");
+    scanf("%d",&m);
+    printf("enter the coefficient of q : ");
+    for(j=0;j<m;j++)
+    {
+        scanf("%d",&q[j].coef);
+    }
+    printf("enter the exponent of q : ");
+    for(j=0;j<m;j++)
+    {
+        scanf("%d",&q[j].expo);
+        
+    }
+    i=0,j=0,k=0;
+    while((i<n)&&(j<m))
+    {
+        if(p[i].expo==q[j].expo)
+        {
+            r[k].coef=p[i].coef+q[j].coef;
+            i++,j++,k++;
+        }
+        else if(p[i].expo>q[j].expo)
+        {
+            r[k].coef=p[i].coef;
+            r[k].expo=p[i].expo;
+            i++,k++;
+        }
+        else if(q[j].expo>p[i].expo)
+        {
+            r[k].coef=q[j].coef;
+            r[k].expo=q[j].expo;
+            j++,k++;
+        }
+    }
+        while(i<n)
+        {
+            r[k].coef=p[i].coef;
+            r[k].expo=p[i].expo;
+            i++,k++;
+        }while(j<m)
+        {
+            r[k].coef=q[j].coef;
+            r[k].expo=q[j].expo;
+            j++,k++;
+        }
+        printf("the polynomial p ");
+        display(p,n);
+        printf("the polynomial q ");
+        display(q,m);
+        printf("the polynoial r ");
+        display(r,k);
+        return 0;
+        
+        
+
+    }
+    
