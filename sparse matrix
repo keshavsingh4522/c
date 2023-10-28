@@ -1,0 +1,108 @@
+#sparse multiplication using c program in data structure
+
+
+#include <stdio.h>
+
+#define MAX_ROWS 100
+#define MAX_COLS 100
+
+// Structure to represent a sparse matrix element
+struct Element {
+    int row;
+    int col;
+    int value;
+};
+
+// Structure to represent a sparse matrix
+struct SparseMatrix {
+    int rows;
+    int cols;
+    int numElements;
+    struct Element data[MAX_ROWS * MAX_COLS];
+};
+
+// Function to input a sparse matrix
+void inputSparseMatrix(struct SparseMatrix *matrix) {
+    printf("Enter the number of rows: ");
+    scanf("%d", &matrix->rows);
+    printf("Enter the number of columns: ");
+    scanf("%d", &matrix->cols);
+    matrix->numElements = 0;
+
+    printf("Enter the elements (row, column, value):\n");
+    for (int i = 0; i < matrix->rows; i++) {
+        for (int j = 0; j < matrix->cols; j++) {
+            int element;
+            scanf("%d", &element);
+            if (element != 0) {
+                matrix->data[matrix->numElements].row = i;
+                matrix->data[matrix->numElements].col = j;
+                matrix->data[matrix->numElements].value = element;
+                matrix->numElements++;
+            }
+        }
+    }
+}
+
+// Function to multiply two sparse matrices
+struct SparseMatrix multiplySparseMatrices(struct SparseMatrix A, struct SparseMatrix B) {
+    struct SparseMatrix result;
+    result.rows = A.rows;
+    result.cols = B.cols;
+    result.numElements = 0;
+
+    for (int i = 0; i < A.numElements; i++) {
+        for (int j = 0; j < B.numElements; j++) {
+            if (A.data[i].col == B.data[j].row) {
+                result.data[result.numElements].row = A.data[i].row;
+                result.data[result.numElements].col = B.data[j].col;
+                result.data[result.numElements].value += A.data[i].value * B.data[j].value;
+                result.numElements++;
+            }
+        }
+    }
+
+    return result;
+}
+
+// Function to display a sparse matrix
+void displaySparseMatrix(struct SparseMatrix matrix) {
+    for (int i = 0; i < matrix.rows; i++) {
+        for (int j = 0; j < matrix.cols; j++) {
+            int found = 0;
+            for (int k = 0; k < matrix.numElements; k++) {
+                if (matrix.data[k].row == i && matrix.data[k].col == j) {
+                    printf("%d ", matrix.data[k].value);
+                    found = 1;
+                    break;
+                }
+            }
+            if (!found) {
+                printf("0 ");
+            }
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    struct SparseMatrix A, B, result;
+
+    printf("Enter the first sparse matrix:\n");
+    inputSparseMatrix(&A);
+
+    printf("Enter the second sparse matrix:\n");
+    inputSparseMatrix(&B);
+
+    if (A.cols != B.rows) {
+        printf("Matrix multiplication not possible.\n");
+    } else {
+        result = multiplySparseMatrices(A, B);
+        printf("Result of matrix multiplication:\n");
+        displaySparseMatrix(result);
+    }
+
+    return 0;
+}
+
+
